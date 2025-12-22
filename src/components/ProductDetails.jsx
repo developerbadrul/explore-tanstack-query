@@ -8,14 +8,15 @@ const retrieveProduct = async ({ queryKey }) => {
 
 const ProductDetails = ({ id }) => {
 
+
     const { data: product, error, isLoading } = useQuery({
         queryKey: ["products", id],
         queryFn: retrieveProduct,
+        enabled: !!id,
+        staleTime: 5 * 60 * 1000
     })
-     
-    // console.log(product);
-    
 
+    if (!id) return <div>Select a product</div>;
     if (isLoading) return <div>Fetching Product Details...</div>
     if (error) return <div>An Error Occured: {error.message}</div>
 

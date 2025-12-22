@@ -1,24 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 
-const ProductList = () => {
 
-    const retrieveProducts = async ({ queryKey }) => {
-        // console.log(queryKey);
-        
-        const response = await axios.get(`http://localhost:3000/${queryKey[0]}`);
-        // console.log(response);
-        
-        return response;
+const ProductList = ({ products = [], onSelectProduct }) => {
+
+    if (!products.length) {
+        return <p className="text-gray-500">No products found</p>;
     }
-
-    const { data: products, error, isLoading } = useQuery({
-        queryKey: ['products'],
-        queryFn: retrieveProducts
-    })
-
-    if (isLoading) return <div>Fetching Products...</div>
-    if (error) return <div>An error occured: {error.message}</div>
 
     return (
         <div className="flex flex-col justify-center items-center w-3/5">
@@ -27,6 +13,7 @@ const ProductList = () => {
                 {products.data && products.data.map(product => (
                     <li
                         key={product.id}
+                        onClick={() => onSelectProduct(product)}
                         className="flex flex-col items-center m-2 border rounded-sm"
                     >
                         <img
