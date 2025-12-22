@@ -1,13 +1,15 @@
 
 import './App.css'
+import ProductDetails from './components/ProductDetails'
 import ProductList from './components/ProductList'
 
 function App() {
 
   return (
-    <>
-      <ProductList/>
-    </>
+    <div className="flex m-2">
+      <ProductList />
+      <ProductDetails id={9}/>
+    </div>
   )
 }
 

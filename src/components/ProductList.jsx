@@ -4,7 +4,7 @@ import axios from "axios";
 const ProductList = () => {
 
     const retrieveProducts = async ({ queryKey }) => {
-        console.log(queryKey);
+        // console.log(queryKey);
         
         const response = await axios.get(`http://localhost:3000/${queryKey[0]}`);
         // console.log(response);
