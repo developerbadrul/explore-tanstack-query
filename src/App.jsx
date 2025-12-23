@@ -19,14 +19,14 @@ function App() {
     queryFn: retrieveProducts
   })
 
-  // console.log(selectedProduct, "selectProduct");
-  
+    console.log(products);
+    
   if (isLoading) return <div>Fetching Products...</div>
   if (error) return <div>An error occured: {error.message}</div>
 
   return (
     <div className="flex m-2">
-      <ProductList products={products} onSelectProduct={setSelectedProduct} />
+      <ProductList products={products.data} onSelectProduct={setSelectedProduct} />
       {
         !selectedProduct ? "Product Not Selected" : <ProductDetails key={selectedProduct.id} id={selectedProduct.id} />
       }

@@ -6,11 +6,13 @@ const ProductList = ({ products = [], onSelectProduct }) => {
         return <p className="text-gray-500">No products found</p>;
     }
 
+    
+
     return (
         <div className="flex flex-col justify-center items-center w-3/5">
             <h2 className="text-3xl my-2">Product List</h2>
             <ul className="flex flex-wrap justify-center items-center" >
-                {products.data && products.data.map(product => (
+                {products && products.map(product => (
                     <li
                         key={product.id}
                         onClick={() => onSelectProduct(product)}
